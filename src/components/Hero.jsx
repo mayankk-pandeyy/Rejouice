@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import DownArrow from '../icons/DownArrow';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Test from './Test';
 
 const Hero = () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -10,27 +11,22 @@ const Hero = () => {
     const heroRef = useRef(null);
 
     useEffect(() => {
+        // Pin the video background
+
+
+        // Move the hero section up while scrolling
         gsap.to(heroRef.current, {
-            y: "-80%", // Moves the video up as the user scrolls
+            y: "-100%",
             ease: "none",
             scrollTrigger: {
                 trigger: videoRef.current,
-                start: "top top",
-                end: "bottom top",
-                markers : true,
-                scrub: 1, // Smooth animation effect
+                start: "center center",
+                end: "+=" + (window.innerHeight * 2),
+                pin : true,
+                scrub: 1,
+                markers : true
             },
         });
-
-        // gsap.to(videoRef.current, {
-        //     scrollTrigger: {
-        //       trigger: heroRef.current, // The whole section is the trigger
-        //       start: "top top",
-        //       end: "bottom top",
-        //       pin: true, // Keeps the video fixed in the background
-        //       scrub: 1, // Smooth effect
-        //     },
-        //   });
     }, []);
 
     return (
