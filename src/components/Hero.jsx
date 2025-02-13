@@ -21,10 +21,9 @@ const Hero = () => {
             scrollTrigger: {
                 trigger: videoRef.current,
                 start: "center center",
-                end: "+=" + (window.innerHeight * 2),
+                end: "+=" + (window.innerHeight),
                 pin : true,
                 scrub: 1,
-                markers : true
             },
         });
     }, []);
